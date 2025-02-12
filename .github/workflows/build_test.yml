@@ -28,3 +28,23 @@ jobs:
       run: npm run start &
     - name: Run Test   
       run: npm run test
+
+
+  security_tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone the repository on the run
+      uses: actions/checkout@v4
+    - name: Use Node.js v23
+      uses: actions/setup-node@v4
+      with:
+        node-version: 23
+        cache: 'npm'
+    - name: Instal Packages    
+      run: npm install
+    - name: Start Frontend   
+      run: npm run start &
+    - name: Run Test   
+      run: npm audit  
